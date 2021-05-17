@@ -1,17 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+/*
+    ===================Component & Props=================
+*/
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//= ==========Functional Component==============
+/*
+function Colock({ locale }) {
+    return (
+        <h1 className="heading">
+            <span className="text">Hello {new Date().toLocaleTimeString(locale)}</span>
+        </h1>
+    );
+}
+
+ReactDOM.render(<Colock locale="bn-BD" />, document.getElementById('root'));
+*/
+
+//= ==========Class Component==============
+
+class Clock extends React.PureComponent {
+    render() {
+        const { locale } = this.props;
+        return (
+            <h1 className="heading">
+                <span className="text">Hello {new Date().toLocaleTimeString(locale)}</span>
+            </h1>
+        );
+    }
+}
+
+ReactDOM.render(<Clock locale="bn-BD" />, document.getElementById('root'));
