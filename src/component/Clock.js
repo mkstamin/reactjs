@@ -3,12 +3,6 @@ import Button from './Button';
 
 class Clock extends React.PureComponent {
     state = { date: new Date(), locale: 'bn-BD' };
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         date: new Date(),
-    //     };
-    // }
 
     componentDidMount() {
         this.clockTimer = setInterval(() => this.tick(), 1000);
@@ -19,8 +13,6 @@ class Clock extends React.PureComponent {
     }
 
     handelClick = (locale) => {
-        // handelClick(e) {
-        // e.preventDefault();
         this.setState({
             locale,
         });
@@ -33,18 +25,20 @@ class Clock extends React.PureComponent {
     }
 
     render() {
-        console.log('Clock component');
-
-        // const { locale } = this.props;
         const { date, locale } = this.state;
+
         return (
-            <>
+            <div>
                 <h1 className="heading">
-                    {/* <span className="text">Hello {date.toLocaleTimeString(locale)}</span> */}
-                    <span className="text">Hello {date.toLocaleTimeString(locale)}</span>
+                    <span className="text">{date.toLocaleTimeString(locale)}</span>
                 </h1>
-                <Button change={this.handelClick} locale="en-us" />
-            </>
+
+                {locale === 'bn-BD' ? (
+                    <Button change={this.handelClick} locale="en-US" show={false} />
+                ) : (
+                    <Button change={this.handelClick} locale="bn-BD" show />
+                )}
+            </div>
         );
     }
 }
