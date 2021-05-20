@@ -46,8 +46,10 @@ class Form extends PureComponent {
             <div>
                 <form onSubmit={this.submitHandler}>
                     <input name="title" type="text" value={title} onChange={this.handleChange} />
+
                     <br />
                     <br />
+
                     <textarea name="text" value={text} onChange={this.handleChange} />
 
                     <br />
