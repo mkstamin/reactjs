@@ -17,6 +17,8 @@
     "jest": true
   },
   "rules": {
+    "jsx-a11y/no-onchange": 0,
+    "class-methods-use-this": 0,
     "react/react-in-jsx-scope": 0,
     "react-hooks/rules-of-hooks": "error",
     "no-console": 0,
