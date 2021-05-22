@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import ClickCounter from './component/ClickCounter';
 import Counter from './component/Counter';
@@ -7,10 +8,21 @@ import ThemeContext from './context/themeContext';
 class App extends PureComponent {
     state = {
         theme: 'dark',
+        switchTheme: () => {
+            this.setState(({ theme }) => {
+                if (theme === 'dark') {
+                    return {
+                        theme: 'light',
+                    };
+                }
+                return {
+                    theme: 'dark',
+                };
+            });
+        },
     };
 
     render() {
-        const { theme } = this.state;
         return (
             <div>
                 <Counter>
@@ -18,7 +30,7 @@ class App extends PureComponent {
                         <ClickCounter count={counter} incrementCount={incrementCount} />
                     )}
                 </Counter>
-                <ThemeContext.Provider value={{ theme }}>
+                <ThemeContext.Provider value={this.state}>
                     <Section />
                 </ThemeContext.Provider>
             </div>
