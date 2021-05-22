@@ -1,28 +1,29 @@
+import React, { PureComponent } from 'react';
 import ClickCounter from './component/ClickCounter';
 import Counter from './component/Counter';
-import HoverCounter from './component/HoverCounter';
+import Section from './component/Section';
+import ThemeContext from './context/themeContext';
 
-function App() {
-    return (
-        <div>
-            {/* <Counter
-                render={(counter, incrementCount) => (
-                    <ClickCounter count={counter} incrementCount={incrementCount} />
-                )}
-            /> */}
-            <Counter>
-                {(counter, incrementCount) => (
-                    <ClickCounter count={counter} incrementCount={incrementCount} />
-                )}
-            </Counter>
+class App extends PureComponent {
+    state = {
+        theme: 'dark',
+    };
 
-            <Counter>
-                {(counter, incrementCount) => (
-                    <HoverCounter count={counter} incrementCount={incrementCount} />
-                )}
-            </Counter>
-        </div>
-    );
+    render() {
+        const { theme } = this.state;
+        return (
+            <div>
+                <Counter>
+                    {(counter, incrementCount) => (
+                        <ClickCounter count={counter} incrementCount={incrementCount} />
+                    )}
+                </Counter>
+                <ThemeContext.Provider value={{ theme }}>
+                    <Section />
+                </ThemeContext.Provider>
+            </div>
+        );
+    }
 }
 
 export default App;
